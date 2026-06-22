@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * CSS custom properties set by ThemeContext on the :root element.
+ * Components can reference var(--color-bg) etc. without reading from JS state.
+ * Default values here match the 'light' theme so SSR / flash-of-unstyled-content
+ * is handled gracefully.
+ */
+:root {
+  --color-bg:        #f1f5f9;
+  --color-bg-alt:    #ffffff;
+  --color-border:    #e2e8f0;
+  --color-header-bg: rgba(255,255,255,0.97);
+  --color-text:      #0f172a;
+  --color-muted:     #64748b;
+  --color-subtle:    #94a3b8;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+#root { width: 100%; min-height: 100vh; }
+
+.phone-shadow { box-shadow: 0 0 0 2px #1e293b, 0 0 0 6px #334155, 0 20px 60px rgba(0,0,0,0.5); }
+
+@keyframes pulse-score {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.score-pulse { animation: pulse-score 2s ease-in-out infinite; }
+
+@keyframes slide-in {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.slide-in { animation: slide-in 0.3s ease-out forwards; }
+
+.nba-card { background: linear-gradient(135deg, #006dcc15, #00c2ff10); border: 1px solid #006dcc40; }
+.pega-gradient { background: linear-gradient(135deg, #003087, #006dcc); }
+.army-gradient { background: linear-gradient(135deg, #2d3e2a, #4a6741); }
+.navy-gradient { background: linear-gradient(135deg, #001f5c, #003087); }
+.raf-gradient { background: linear-gradient(135deg, #00205c, #003591); }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg-alt, #1e293b); }
+::-webkit-scrollbar-thumb { background: var(--color-border, #475569); border-radius: 3px; }
